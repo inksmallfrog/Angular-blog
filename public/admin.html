@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>墨小蛙的厨房</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheets/admin/base.css">
+</head>
+<body ng-app="blog_admin">
+	<div class="left_menu" ng-controller="menuCtrl">
+		<a id="left_menu_close" href="">
+			<span class="glyphicon glyphicon-remove"></span>
+		</a>
+		<div class="menu_header">
+			<img class="host_avator" src="images/host/avator.jpg" alt="inksmallfrog">
+			<p class="host_name">墨小蛙</p>
+			<p class="host_desc">前天是小兔子，昨天是小鹿</p>
+		</div>
+		<div class="menu_container">
+			<ul class="menu_list">
+				<li class="menu_item">
+					<a id="menu_post" ui-sref="post" ng-click="showPostMenuList()" href="">文章</a>
+					<ul class="tmp_hide menu_sub_list" ng-show="menuState.post">
+						<li class="menu_sub_item" id="menu_post_catagory"><a href="" ng-click="showPostCatagories()">分类</a></li>
+						<li class="menu_sub_item" id="menu_post_tag"><a href="" ng-click="showPostTags()">标签</a></li>
+						<li class="menu_sub_item" id="menu_post_time">时间</li>
+					</ul>
+				</li>
+				<!-- Other item here -->
+			</ul>
+		</div>
+	</div>
+	<div class="main-container">
+		<div ui-view>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="javascripts/angular/admin/app.js"></script>
+	<script src="javascripts/angular/admin/controllers.js"></script>
+</body>
+</html>

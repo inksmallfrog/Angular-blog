@@ -1,0 +1,58 @@
+.left_menu{
+	position: relative;
+
+	float: left;
+	width: 280px;
+	height: 100vh;
+
+	background-color: #f3f1cb;
+}
+
+#left_menu_close{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.menu_header{
+	padding-top: 30px;
+	padding-bottom: 20px;
+	background-color: #f77f29;
+	text-align: center;
+}
+.menu_header .host_avator{
+	width: 80px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+}
+.menu_header .host_name{
+	font-size: 20px;
+}
+
+.main-container{
+	position: relative;
+	margin-left: 280px;
+	height: 100vh;
+	background:#ecc;
+}
+
+.posts_attr_container{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 280px;
+	height: 100vh;	
+	background: #3f3;
+}
+
+
+.posts_list_container{
+	float: left;
+	width: 280px;
+	height: 100vh;
+	background: #3e3;
+}
+
+.post_container{
+	margin-left: 280px;
+}

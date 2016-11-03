@@ -1,12 +1,19 @@
-'use strict';
+var myApp = angular.module('helloworld', ['ui.router']);
 
-var app = angular.module('blog', ['ngRoute']);
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-	$routeProvider
-		.when('/', {templateUrl: 'views/tpls/welcome.html', controller: 'WelcomeCtrl'})
-		.otherwise({redirectTo: '/'});
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	});
+myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+	  $urlRouterProvider.otherwise('/');
+	  var helloState = {
+		      name: 'hello',
+		      url: '/hello',
+		      template: '<h3>hello world!</h3>'
+		    }
+
+	  var aboutState = {
+		      name: 'about',
+		      url: '/about',
+		      template: '<h3>Its the UI-Router hello world app!</h3>'
+		    }
+
+	  $stateProvider.state(helloState);
+	  $stateProvider.state(aboutState);
 }]);

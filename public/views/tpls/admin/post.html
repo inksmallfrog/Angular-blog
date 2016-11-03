@@ -1,39 +1,25 @@
-<div class="posts_attr_container posts_catagories_container" ng-show="catagories_show">
-	<div class="posts_list_header">
-		<h4 class="posts_list_header_desc">笔记本</h4>
-	</div>
-	<ul class="catagories_list">
-		<li class="catagory_item"><a href="" ng-click="toCatagory(1)">1</a></li>
-		<li class="catagory_item"><a href="" ng-click="toCatagory(2)">2</a></li>
-		<li class="catagory_item"><a href="">3</a></li>
-	</ul>
-</div>
-<div class="posts_tags_container" ng-show="tags_show">
-	<div class="posts_list_header">
-		<h4 class="posts_list_header_desc">标签</h4>
-	</div>
-	<ul class="tags_list">
-		<li class="tag_item"><a href=""></a></li>
-		<li class="tag_item"><a href=""></a></li>
-		<li class="tag_item"><a href=""></a></li>
-	</ul>
-</div>
 <div class="posts_list_container">
 	<div class="posts_list_header">
 		<h4 class="posts_list_header_desc">{{ list_title }}</h4>
 	</div>
 	<ul class="posts_list">
-		<li class="post_item"><a ng-click="getPost(1)" href="">1</a></li>
-		<li class="post_item"><a ng-click="getPost(2)" href="">2</a></li>
-		<li class="post_item"><a href="">3</a></li>
+		<li class="attr_item" ng-repeat="catagory in catagories">
+			<p>{{ catagory.name }}</p>
+			<ul>
+				<li class="post_item" ng-repeat="post in posts | filter: { catogory_id: catagory.id }:true">
+					<a href="">{{post.title}}</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </div>
 <div class="post_container">
 	<form class="form" action="" role="form">
 		<div class="form-group">
-			<input id="post_title" class="form-control" type="">
-			<input id="post_tags" class="form-control" type="">
-			<textarea id="post_content" class="form-control" name="" cols="30" rows="10" ng-model=post_content></textarea>
+			<input id="post_title" class="form-control" type="" ng-model="title">
+			<input id="post_tags" class="form-control" type="" ng-model="tags">
+			<textarea id="post_content" class="form-control" name="" cols="30" rows="10" ng-model="content"></textarea>
+			<button class="btn btn-primary" ng-click="submitPost()">提交</button>
 		</div>
 	</form>
 </div>

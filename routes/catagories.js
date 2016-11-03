@@ -7,7 +7,7 @@ var Catagory = require('../models/Catagory.js');
 router.get('/', function(req, res, next) {
 	Catagory.find(function(err, catagories){
 		if(err) return next(err);
-		res.json(catagoies);
+		res.json(catagories);
 	});
 });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var blog_admin = angular.module('blog_admin', ['ui.router']);
+var blog_admin = angular.module('blog_admin', ['ngResource', 'ui.router']);
 blog_admin.config(function($stateProvider){
 	$stateProvider
 		.state("index", {

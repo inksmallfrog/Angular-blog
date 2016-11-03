@@ -1,4 +1,4 @@
-var myApp = angular.module('helloworld', ['ui.router']);
+var myApp = angular.module('helloworld', ['ngResource', 'ui.router']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 	  $urlRouterProvider.otherwise('/');

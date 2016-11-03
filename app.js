@@ -4,11 +4,22 @@ var express = require('express')
 	, logger = require('morgan')
 	, cookieParser = require('cookie-parser')
 	, bodyParser = require('body-parser')
+	, mongoose = require('mongoose')
 
-	, index = require('./routes/index')
-	, users = require('./routes/users')
+	, posts = require('./routes/posts')
+	, catagories = require('./routes/catagories')
 
 	, app = express();
+
+// mongoose
+mongoose.connect('mongodb://localhost/blog', function(err){
+	if(err){
+		console.log('connection error', err);
+	}
+	else{
+		console.log('connection successful');
+	}
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+
+app.use('/posts', posts);
+app.use('/catagories', catagories);
 
 app.get('/', function (req, res) {
 	res.sendfile('public/index.html');

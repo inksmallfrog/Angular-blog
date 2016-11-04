@@ -1,24 +1,33 @@
 <div class="posts_list_container">
 	<div class="posts_list_header">
 		<h4 class="posts_list_header_desc">{{ list_title }}</h4>
+		<button class="btn btn-primary" ng-click="newPost()">新建</button>
 	</div>
 	<ul class="posts_list">
-		<li class="attr_item" ng-repeat="catagory in catagories">
-			<p>{{ catagory.name }}</p>
+		<li class="attr_item" ng-repeat="c in catagories">
+			<p>{{ c.name }}</p>
 			<ul>
-				<li class="post_item" ng-repeat="post in posts | filter: { catogory_id: catagory.id }:true">
-					<a href="">{{post.title}}</a>
+				<li class="post_item" ng-repeat="post in posts | filter:{catagory: {_id: c._id}}:true | orderBy:'-created_at'">
+					<a href="" ng-click="showPost(post)">{{post.title}}</a>
+					<button class="btn btn-danger" ng-click="deletePost(post)" ng-hide="post.is_new">删除</button>
 				</li>
 			</ul>
 		</li>
 	</ul>
 </div>
 <div class="post_container">
-	<form class="form" action="" role="form">
+	<div class="post_view" ng-hide="edit_mode">
+		<p class="post_title">{{current_post.title}}</p>
+		<p class="post_catagory">{{current_post.catagory.name}}</p>
+		<p class="post_tags">{{current_post.tags}}</p>
+		<p class="content">{{current_post.content}}</p>
+		<button class="btn btn-primary" ng-click="editPost(current_post)">编辑</button>
+	</div>
+	<form class="form" action="" role="form" ng-show="edit_mode">
 		<div class="form-group">
-			<input id="post_title" class="form-control" type="" ng-model="title">
-			<input id="post_tags" class="form-control" type="" ng-model="tags">
-			<textarea id="post_content" class="form-control" name="" cols="30" rows="10" ng-model="content"></textarea>
+			<input id="post_title" class="form-control" type="" ng-model="current_post.title">
+			<input id="post_tags" class="form-control" type="" ng-model="current_post.tags">
+			<textarea id="post_content" class="form-control" name="" cols="30" rows="10" ng-model="current_post.content"></textarea>
 			<button class="btn btn-primary" ng-click="submitPost()">提交</button>
 		</div>
 	</form>
